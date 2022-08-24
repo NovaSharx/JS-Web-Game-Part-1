@@ -5,15 +5,15 @@ function newImage(imgAddress, left, bottom) {
     image.style.left = left
     image.style.bottom = bottom
     document.body.append(image)
+    return image
 }
 
 function newItem(imgAddress, left, bottom) {
-    let image = document.createElement('img')
-    image.src = imgAddress
-    image.style.position = 'fixed'
-    image.style.left = left
-    image.style.bottom = bottom
-    document.body.append(image)
+    let item = newImage(imgAddress, left, bottom)
+
+    item.addEventListener('dblclick', function() {
+        item.remove()
+    })
 }
 
 newImage('assets/green-character.gif','100px','100px')
@@ -24,7 +24,5 @@ newImage('assets/crate.png','150px','200px')
 newImage('assets/well.png','500px','425px')
 
 newItem('assets/sword.png', '500px', '405px')
-
-sword.addEventListener('click', function() {
-    sword.remove()
-})
+newItem('assets/shield.png', '165px', '185px')
+newItem('assets/staff.png', '600px', '100px')
